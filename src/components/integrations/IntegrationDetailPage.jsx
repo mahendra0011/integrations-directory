@@ -580,6 +580,27 @@ function AuthSection({ data, category }) {
             Store {category.credential} in `.env`, deployment secrets, or a secret manager. Public browser values must use clear names and never include server secrets.
           </p>
           <InfoBox type="warn" title="Security rule" icon={AlertTriangle}>
+
+  return (
+    <div className="space-y-5">
+      <div className="flex gap-4">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#6C63FF] text-sm font-medium text-white">1</div>
+        <div className="min-w-0 flex-1">
+          <h3 className="mb-1 text-sm font-medium text-gray-950">Create restricted credentials</h3>
+          <p className="mb-3 text-[13px] leading-6 text-gray-600">
+            In {data.name}, open the credentials or API key area and create only the permissions needed for {category.objective}.
+          </p>
+          <ScreenshotFigure image={image} />
+        </div>
+      </div>
+      <div className="flex gap-4">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-900 text-sm font-medium text-white">2</div>
+        <div className="min-w-0 flex-1">
+          <h3 className="mb-1 text-sm font-medium text-gray-950">Store values once and keep secrets server-side</h3>
+          <p className="text-[13px] leading-6 text-gray-600">
+            Store {category.credential} in `.env`, deployment secrets, or a secret manager. Public browser values must use clear names and never include server secrets.
+          </p>
+          <InfoBox type="warn" title="Security rule" icon={AlertTriangle}>
             Never put {data.name} secret keys in React code, screenshots, git commits, issue trackers, or public configuration files.
           </InfoBox>
         </div>
@@ -1149,22 +1170,23 @@ export default function IntegrationDetailPage() {
               <span className="text-gray-600">{data.name}</span>
             </div>
 
-            <header className="mb-7 border-b border-gray-200 pb-7">
-              <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-medium text-emerald-700">Stable guide</span>
-                <span className="rounded-full bg-blue-50 px-3 py-1 text-[11px] font-medium text-blue-700">REST API</span>
-                <span className="rounded-full bg-[#EEEDFE] px-3 py-1 text-[11px] font-medium text-[#3C3489]">JS SDK</span>
-                <span className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-medium text-amber-700">{category.badge}</span>
+            <header className="relative mb-8 overflow-hidden rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-white to-[#6C63FF]/5 p-7 shadow-sm sm:p-9">
+              <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#6C63FF] to-[#4F46E5]" />
+              <div className="mb-4 flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-gradient-to-r from-emerald-50 to-emerald-100 px-3 py-1 text-[11px] font-medium text-emerald-700 shadow-sm">&#9679; Stable guide</span>
+                <span className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100 px-3 py-1 text-[11px] font-medium text-blue-700 shadow-sm">&#9679; REST API</span>
+                <span className="inline-flex items-center gap-1 rounded-full border border-purple-200 bg-gradient-to-r from-purple-50 to-purple-100 px-3 py-1 text-[11px] font-medium text-[#3C3489] shadow-sm">&#9679; JS SDK</span>
+                <span className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-gradient-to-r from-amber-50 to-amber-100 px-3 py-1 text-[11px] font-medium text-amber-700 shadow-sm">&#9679; {category.badge}</span>
               </div>
-              <h1 className="mb-2 text-[28px] font-medium leading-tight text-gray-950 sm:text-[32px]">
+              <h1 className="mb-3 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-[28px] font-bold leading-tight text-transparent sm:text-[34px]">
                 {data.name} Integration Guide
               </h1>
               <p className="max-w-[720px] text-sm leading-6 text-gray-600">{data.desc}</p>
-              <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-400">
-                <span className="flex items-center gap-1.5"><Clock size={14} />~15 min setup</span>
-                <span className="flex items-center gap-1.5"><GitBranch size={14} />Node 18+ / MERN</span>
-                <span className="flex items-center gap-1.5"><Calendar size={14} />Updated June 2026</span>
-                <span className="flex items-center gap-1.5"><Users size={14} />{workflowSteps.length} setup sections</span>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-400">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-gray-100/60 px-2.5 py-1.5 text-gray-500"><Clock size={13} className="text-[#6C63FF]" />~15 min setup</span>
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-gray-100/60 px-2.5 py-1.5 text-gray-500"><GitBranch size={13} className="text-[#6C63FF]" />Node 18+ / MERN</span>
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-gray-100/60 px-2.5 py-1.5 text-gray-500"><Calendar size={13} className="text-[#6C63FF]" />Updated June 2026</span>
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-gray-100/60 px-2.5 py-1.5 text-gray-500"><Users size={13} className="text-[#6C63FF]" />{workflowSteps.length} setup sections</span>
               </div>
             </header>
 
@@ -1190,8 +1212,6 @@ export default function IntegrationDetailPage() {
 
             <SectionHeader id="s-prereq" icon={ListChecks} title="Prerequisites" desc="Have these ready before you start." />
             <CheckList items={prerequisites} />
-
-            <Divider />
 
             <SectionHeader id="s-setup" icon={Workflow} title="Step-by-step setup guide" desc="Every setup step with dashboard hints, detailed manual actions, code where needed, verification checks, and an image." />
             <SetupGuideTimeline data={data} category={category} />
@@ -1261,10 +1281,13 @@ export default function IntegrationDetailPage() {
             <SectionHeader id="s-links" icon={LinkIcon} title="Resources and links" desc="Every important starting point in one place." />
             <ResourceLinks data={data} />
 
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-gray-200 py-4 text-xs text-gray-400">
-              <span>Last updated June 18, 2026 - Template v3.0</span>
-              <Link to="/integrations" className="inline-flex items-center gap-1 text-[#6C63FF] hover:text-[#4F46E5]">
-                <ArrowLeft size={13} />
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 px-5 py-4 text-xs text-gray-400 shadow-sm">
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#6C63FF]" />
+                Last updated June 18, 2026 — Template v3.0
+              </span>
+              <Link to="/integrations" className="group inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-[#6C63FF] to-[#4F46E5] px-3.5 py-2 text-[11px] font-medium text-white shadow-sm shadow-[#6C63FF]/20 transition-all duration-300 hover:shadow-md hover:shadow-[#6C63FF]/30">
+                <ArrowLeft size={12} className="transition-transform duration-300 group-hover:-translate-x-0.5" />
                 All integrations
               </Link>
             </div>
