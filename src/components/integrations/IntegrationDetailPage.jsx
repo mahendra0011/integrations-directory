@@ -580,27 +580,6 @@ function AuthSection({ data, category }) {
             Store {category.credential} in `.env`, deployment secrets, or a secret manager. Public browser values must use clear names and never include server secrets.
           </p>
           <InfoBox type="warn" title="Security rule" icon={AlertTriangle}>
-
-  return (
-    <div className="space-y-5">
-      <div className="flex gap-4">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#6C63FF] text-sm font-medium text-white">1</div>
-        <div className="min-w-0 flex-1">
-          <h3 className="mb-1 text-sm font-medium text-gray-950">Create restricted credentials</h3>
-          <p className="mb-3 text-[13px] leading-6 text-gray-600">
-            In {data.name}, open the credentials or API key area and create only the permissions needed for {category.objective}.
-          </p>
-          <ScreenshotFigure image={image} />
-        </div>
-      </div>
-      <div className="flex gap-4">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-900 text-sm font-medium text-white">2</div>
-        <div className="min-w-0 flex-1">
-          <h3 className="mb-1 text-sm font-medium text-gray-950">Store values once and keep secrets server-side</h3>
-          <p className="text-[13px] leading-6 text-gray-600">
-            Store {category.credential} in `.env`, deployment secrets, or a secret manager. Public browser values must use clear names and never include server secrets.
-          </p>
-          <InfoBox type="warn" title="Security rule" icon={AlertTriangle}>
             Never put {data.name} secret keys in React code, screenshots, git commits, issue trackers, or public configuration files.
           </InfoBox>
         </div>
